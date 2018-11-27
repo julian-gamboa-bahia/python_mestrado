@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Criando Arquivos Testes</title>
+
+
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">  
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    </head>
+
+    <body style="{{color_fundo}}">
+
+<!-----------------Agosto 26, 2016------------
+
+-----Passo 1-->
+
+<!-----------------Agosto 26, 2016------------
+GERADO o material:
+-----Passo 1-->
+
+
+    <form action="" method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+	<div>
+<b>Por favor indique o material:</b>
+<br>
+{{ form.select }}
+	</div>
+</br>
+            <p><input type="submit" value="Gerar Arquivo Teste"/></p>
+        </form>
+	</br>
+	{% autoescape off %}{{legendaResultado}}{% endautoescape %}
+	</br>
+
+
+</br>
+
+
+</body>
+
+</html>

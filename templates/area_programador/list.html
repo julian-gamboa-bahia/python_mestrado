@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Carregando Arquivos Testes</title>
+
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">  
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+        
+    </head>
+
+    <body style="{{color_fundo}}">
+
+
+        <form action="" method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+
+<!-----------------Agosto 26, 2016------------
+
+/home/princesinha/Dropbox/mechgFev12/django1.5.12/criterios_DidaticosSetembro/templates/criterios_DidaticosSetembro
+
+/home/princesinha/Dropbox/mechgFev12/django1.5.12/areaProgramadorAgosto2016/templates/areaProgramadorAgosto
+
+Escolhemos o critério que será aplicado sobre todas entradas
+-----Passo 1-->
+<div>
+Critério:
+<br>
+	<select name="criterio">
+		<option value="0" selected="selected" >máxima tensão
+		</option>
+		<option value="1" >máxima deformação
+		</option>
+		<option value="2">Tsai-Hill
+		</option>
+		<option value="3">azzi-tsai
+		</option>
+		<option value="4">Tsai-wu
+		</option>
+
+		<option value="5">Hoffman
+		</option>
+
+		<option value="6">Hashin
+		</option>
+
+		<option value="7">Christensen
+		</option>
+
+		<option value="8">Puck
+		</option>
+
+		<option value="9">Larck03
+		</option>
+
+	</select>
+</div>
+<br>
+
+<!-----------------Agosto 26, 2016------------
+1) Escolhemos o tipo de material 
+que sera sobmetido à esforços
+
+2) Angulo 
+-----Passo 1-->
+	<div>
+	       Lamina:  {{ form.select }}
+	</div>
+</br>
+	<div >
+		Ângulo Rotação  [&#176]: 
+        <input type="text" name="angulo_inicial">
+	</div>
+
+
+            <p>{{ form.non_field_errors }}</p>
+
+            <p>{{ form.docfile.label_tag }} {{ form.docfile.help_text }}</p>
+
+            <p>
+                {{ form.docfile.errors }}
+
+<!--Passo 2
+carregamos o arquivo:
+-----Passo 1-->
+                {{ form.docfile }}
+
+
+<!--Controle
+as pastas
+-----Passo 1-->
+
+            </p>
+
+            <p><input type="submit" value="Carregar"/></p>
+        </form>
+    </body>
+
+</html>

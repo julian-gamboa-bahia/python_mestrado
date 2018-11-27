@@ -1,0 +1,241 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html><head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	<title>Envelopes Integrados</title>
+	<link href="http://www.flotcharts.org/flot/examples/examples.css" rel="stylesheet" type="text/css">
+	<!--[if lte IE 8]><script language="javascript" type="text/javascript" src="../../excanvas.min.js"></script><![endif]-->
+	<script language="javascript" type="text/javascript" src="http://www.flotcharts.org/flot/jquery.js"></script>
+	<script language="javascript" type="text/javascript" src="http://www.flotcharts.org/flot/jquery.flot.js"></script>
+
+
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+
+<script>
+function zerar_click()
+{
+
+			$.ajax({
+	    	url: "/criterios_envelopes_julian/redesenho/zerar/",    
+	    	cache: true,        
+	    	type : 'get',
+			'success': function (data,response) {
+	        }
+    	});
+		alert("Próximo envelope zera desenhado desde zero");
+//zerar_click
+}
+</script>
+
+<script type="text/javascript">
+
+$.ajax({
+	dataType: 'json',
+    contentType: "application/json",
+    type : 'get',
+	cache: true,
+	url: "/criterios_envelopes_julian/redesenho/entregarENVELOPE/",	
+	'success': function (data,response) 
+	{
+
+		criterioTEXT = data.criterio;
+
+		for(indice=0;indice<criterioTEXT.length;indice++)
+		{
+			$("#envelope_"+indice).text(criterioTEXT[indice]);        
+			$("#checkbox_envelope_"+indice).show();
+		}
+//Agora procurando os extremos
+		min_valoresX=[]
+		max_valoresX=[]
+		min_valoresY=[]
+		max_valoresY=[]					
+					
+		extremos=data.extremos;						
+
+		for(i=0;i<extremos.length;i++)
+		{
+			min_valoresX.push(extremos[i][0]);
+			max_valoresX.push(extremos[i][1]);
+			min_valoresY.push(extremos[i][2]);
+			max_valoresY.push(extremos[i][3]);
+		}
+		min_valoresX.sort(function(a, b) {  return a - b;});
+		max_valoresX.sort(function(a, b) {  return a - b;});
+		min_valoresY.sort(function(a, b) {  return a - b;});
+		max_valoresY.sort(function(a, b) {  return a - b;});
+					
+////////////////////	
+
+/**********************************************************************************************
+Novembro 23,	 11:20 . Os extremos são colocados ddesde aqui
+Todas as operações dentro do SUCESS
+***********************************************************************************************/
+		escala=1.5;
+		minimoX=min_valoresX[0]*escala;
+		maximoX=max_valoresX[max_valoresX.length-1]*escala;
+		minimoY=min_valoresY[0]*escala;
+		maximoY=max_valoresY[max_valoresX.length-1]*escala;
+
+////////////////////	
+					options = 
+					{	
+						series: {},	
+						yaxis: {tickSize:1, tickDecimals:0,axisLabel: "nome_eixo_x",axisLabelUseCanvas: true,axisLabelPadding: 5,ticks:[minimoY, minimoY/2.0, minimoY/4.0,  maximoY/4.0, maximoY/2.0, maximoY],tickFormatter:function numberWithCommas(x) { return x.toExponential(1)+" (Pa)";},min:minimoY,max:maximoY,},
+						xaxis: {tickSize:1, tickDecimals:0,axisLabel: "nome_eixo_x",axisLabelUseCanvas: true,axisLabelPadding: 5,ticks:[minimoX, minimoX/2.0, minimoX/4.0, ,maximoX/4.0, maximoX/2.0, maximoX],	tickFormatter: function numberWithCommas(x) { return x.toExponential(1)+" (Pa)";},min:minimoX,max:maximoX,},
+						selection: {mode: "xy"},
+						legend: {position: "se"},
+						colors:["#FF7070", "#0022FF", "#002200", "#0012FF", "#00227F", "#0022F0"],	
+					};
+////////////////////	
+
+		        }
+		    }).done (function(data,httpResponse) 
+{   
+///  DONE	
+	d1=[];d2=[];d3=[];d4=[];d5=[];d6=[];
+
+	//dimensao_data = data.dimensao_data;	
+
+	a = data.data;
+
+	if(a.length>=1)
+	{
+		array = JSON.parse("[" + a[0] + "]");
+		vazio=[];
+		for(i=0;i<array.length;i++)
+		{
+			vazio.push(array[i]);
+		}	
+		d1=vazio;
+
+	}
+
+////////////////////////////////
+
+	if(a.length>=2)
+	{
+		array = JSON.parse("[" + a[1] + "]");
+		vazio=[];
+		
+		for(i=0;i<array.length;i++)
+		{
+			vazio.push(array[i]);
+		}	
+		d2=vazio;
+	}
+
+
+////////////////////////////////
+	if(a.length>=3)
+	{
+		array = JSON.parse("[" + a[2] + "]");
+		vazio=[];
+		for(i=0;i<array.length;i++)
+		{
+			vazio.push(array[i]);
+		}
+		
+		d3=vazio;
+	}
+////////////////////////////////
+	if(a.length>=4)
+	{
+		array = JSON.parse("[" + a[3] + "]");
+		vazio=[];
+		for(i=0;i<array.length;i++)
+		{
+			vazio.push(array[i]);
+		}	
+		d4=vazio;		
+	}
+////////////////////////////////
+	if(a.length>=5)
+	{
+		array = JSON.parse("[" + a[4] + "]");
+		vazio=[];
+		for(i=0;i<array.length;i++)
+		{
+			vazio.push(array[i]);
+		}	
+		d5=vazio;
+	}
+////////////////////////////////
+	if(a.length>=6)
+	{
+		array = JSON.parse("[" + a[5] + "]");
+		vazio=[];
+		for(i=0;i<array.length;i++)
+		{
+			vazio.push(array[i]);
+		}	
+		d6=vazio;		
+	}
+
+////////////////////////////////	
+
+
+
+
+	var dataset = [
+				{ data: d1, lines: { show: true, lineWidth: 1, fill: false }, points: {show: false, radius: 3}},
+				{ data: d2, lines: { show: true, lineWidth: 1, fill: true }, points: {show: false, radius: 3}},
+				{ data: d3, lines: { show: true, lineWidth: 1, fill: false }, points: {show: false, radius: 3}},
+				{ data: d4, lines: { show: true, lineWidth: 1, fill: false }, points: {show: false, radius: 3}},
+				{ data: d5, lines: { show: true, lineWidth: 1, fill: false }, points: {show: false, radius: 3}},
+				{ data: d6, lines: { show: true, lineWidth: 1, fill: false }, points: {show: false, radius: 3}},
+	];
+
+
+	var plot = $.plot(placeholder, dataset , options );
+	}).fail   (function()     
+	{ 
+		alert("Error")   ;
+	}
+);
+
+</script>
+
+</head>
+<body>
+	<div id="content">
+
+		<div class="demo-container">
+			<div id="placeholder" class="demo-placeholder" style="padding: 0px; position: relative;"><canvas class="flot-base" style="direction: ltr; position: absolute; left: 0px; top: 0px; width: 818px; height: 413px;" width="818" height="413"></canvas><div class="flot-text" style="position: absolute; top: 0px; left: 0px; bottom: 0px; right: 0px; font-size: smaller; color: rgb(84, 84, 84);"><div class="flot-x-axis flot-x1-axis xAxis x1Axis" style="position: absolute; top: 0px; left: 0px; bottom: 0px; right: 0px; display: block;"><div style="position: absolute; max-width: 102px; top: 394px; left: 25px; text-align: center;" class="flot-tick-label tickLabel">0</div><div style="position: absolute; max-width: 102px; top: 394px; left: 141px; text-align: center;" class="flot-tick-label tickLabel">2</div><div style="position: absolute; max-width: 102px; top: 394px; left: 257px; text-align: center;" class="flot-tick-label tickLabel">4</div><div style="position: absolute; max-width: 102px; top: 394px; left: 373px; text-align: center;" class="flot-tick-label tickLabel">6</div><div style="position: absolute; max-width: 102px; top: 394px; left: 488px; text-align: center;" class="flot-tick-label tickLabel">8</div><div style="position: absolute; max-width: 102px; top: 394px; left: 601px; text-align: center;" class="flot-tick-label tickLabel">10</div><div style="position: absolute; max-width: 102px; top: 394px; left: 717px; text-align: center;" class="flot-tick-label tickLabel">12</div></div><div class="flot-y-axis flot-y1-axis yAxis y1Axis" style="position: absolute; top: 0px; left: 0px; bottom: 0px; right: 0px; display: block;"><div style="position: absolute; top: 381px; left: 4px; text-align: right;" class="flot-tick-label tickLabel">-2.5</div><div style="position: absolute; top: 326px; left: 8px; text-align: right;" class="flot-tick-label tickLabel">0.0</div><div style="position: absolute; top: 272px; left: 8px; text-align: right;" class="flot-tick-label tickLabel">2.5</div><div style="position: absolute; top: 218px; left: 8px; text-align: right;" class="flot-tick-label tickLabel">5.0</div><div style="position: absolute; top: 163px; left: 8px; text-align: right;" class="flot-tick-label tickLabel">7.5</div><div style="position: absolute; top: 109px; left: 2px; text-align: right;" class="flot-tick-label tickLabel">10.0</div><div style="position: absolute; top: 55px; left: 2px; text-align: right;" class="flot-tick-label tickLabel">12.5</div><div style="position: absolute; top: 1px; left: 2px; text-align: right;" class="flot-tick-label tickLabel">15.0</div></div></div><canvas class="flot-overlay" style="direction: ltr; position: absolute; left: 0px; top: 0px; width: 818px; height: 413px;" width="818" height="413"></canvas></div>
+
+		</div>		
+<div>
+
+</div>	
+		<a class="btn btn-primary" onclick="zerar_click()" role="button">Zerar grafico para próxima construção</a>
+
+		<div><b>Histórico de envelopes</b><br>
+			(Primeiramente os mais antigo)
+			<br>
+				
+				<a id="envelope_0" target="_blank"/a></a><br>
+				
+				<a id="envelope_1" target="_blank"/a></a><br>
+				
+				<a id="envelope_2" target="_blank"/a></a><br>
+				
+				<a id="envelope_3" target="_blank"/a></a><br>
+				
+				<a id="envelope_4" target="_blank"/a></a><br>
+				
+				<a id="envelope_5" target="_blank"/a></a><br>
+				
+				<a id="envelope_6"  target="_blank"/a></a><br>
+		 </div>		
+
+			</div>
+
+		</div>
+
+	</div>
+
+	</div>
+
+
+</body></html>

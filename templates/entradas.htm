@@ -1,0 +1,278 @@
+{% extends "mechg/base.html" %}
+
+{% load staticfiles %}
+
+{% block content %}
+
+<!-----------------Agosto 19, 2018------------
+
+Fazendo uma migração simples, será colocado o sistema de entradas (HTML simples) usando um iframe
+
+
+-----Passo 1-->
+
+        <link href='/static/mechg/bootstrap/2.3.2/css/bootstrap.css' rel='stylesheet' />
+        <link href='/static/mechg/font-awesome/css/font-awesome.css' rel='stylesheet' />
+        <link href='/static/mechg/select2/select2.css' rel='stylesheet' />
+        <link href='/static/mechg/select2/select2-bootstrap.css' rel='stylesheet' />
+        <link href='/static/mechg/css/mechg.css' rel='stylesheet' />
+        <link href='/static/mechg/css/mechg-micro.css' rel='stylesheet' />
+        <link href='/static/mechg/css/mechg-nano.css' rel='stylesheet' />
+        <link href='/static/mechg/css/mechg-graficos.css' rel='stylesheet' />
+        <link href='https://fonts.googleapis.com/css?family=Lato' rel='stylesheet' type='text/css'>
+
+       <style type="text/css">
+            html {
+                overflow-y: scroll;
+            }
+            
+            body {
+                padding-top: 20px;
+                padding-bottom: 60px;
+                width: 100%;
+            }
+            
+            /* Custom container */
+            .container {
+                margin: 0 auto;
+                width: 1200px;
+            }
+            .container > hr {
+                margin: 10px 0;
+            }
+            
+            /* Main marketing message and sign up button */
+            .jumbotron {
+                margin: 20px 0;
+                text-align: center;
+            }
+            .jumbotron h1 {
+                font-size: 100px;
+                line-height: 1;
+            }
+            .jumbotron .lead {
+                font-size: 24px;
+                line-height: 1.25;
+            }
+            .jumbotron .btn {
+                font-size: 21px;
+                padding: 14px 24px;
+            }
+             
+            /* Supporting marketing content */
+            .marketing {
+                margin: 60px 0;
+            }
+            .marketing p + h4 {
+                margin-top: 28px;
+            }
+            
+            /* Customize the navbar links to be fill the entire space of the .navbar */
+            .navbar .navbar-inner {
+            padding: 0;
+            }
+            .navbar .nav {
+                display: flex;
+                width: 100%;
+            }
+            .navbar .nav li {
+                flex: 1;
+                float: none;
+            }
+            .dropdown-menu li {
+                display: table-cell;
+            }
+            .navbar .nav li a {
+                font-weight: bold;
+                text-align: center;
+                border-left: 1px solid rgba(255,255,255,.75);
+                border-right: 1px solid rgba(0,0,0,.1);
+            }
+            .navbar .nav li:first-child a {
+                border-left: 0;
+                border-radius: 3px 0 0 3px;
+            }
+            .navbar .nav li:last-child a {
+                border-right: 0;
+                border-radius: 0 3px 3px 0;
+            }
+            
+            h3 {
+                display: block;
+                width: 95%;
+                padding: 0;
+                margin-bottom: 20px;
+                line-height: 40px;
+                color: #333333;
+                border: 0;
+                border-bottom: 1px solid #e5e5e5;
+                
+                margin-left: auto;
+                margin-right: auto;
+            }
+            
+            .modal .btn {
+                margin-bottom: 0px;
+            }
+            
+            .modal h3 {
+                border-style: none;
+            }
+            
+            #header {
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+                margin-bottom: 10px;
+            }
+            
+            #header_login {
+                text-align: right;
+            }
+            
+            #header .btn {
+                margin-bottom: 0px;
+            }
+            #logo_ufrgs{
+            	padding-left:30px;
+            	text-align:center;
+            }
+        </style>
+<style type="text/css">
+    #prepend_GeoF {
+        width: 316px;
+    }
+    
+    #div_GeoF .select2-container {
+        width: 200px;
+    }
+    
+    /*
+    .bootbox.modal {
+        width: 591px;
+    }
+    
+    .dialog-form .input-prepend .add-on {
+        width: 300px;
+    }
+    
+    .dialog-form .input-prepend .dialog-input {
+        width: 236px;
+    }
+    
+    .dialog-form .select2-container {
+        margin-bottom: 0px;
+    }
+    */
+   sub,sup {
+	  font-size: 75%;
+	  line-height: 0;
+	  position: relative;
+	  vertical-align: baseline;
+	}
+	
+	sup {
+	  top: -0.5em;
+	  right: -0.1em;
+	}
+	
+	sub {
+	  bottom: -0.5em;
+	  left: -0.4em;
+	}
+	#angulo{
+		width: 200px;
+	}
+	#sigmaBA{
+		width: 355px;
+	}
+	#dispLaminaSelecionar{
+		display:flex;
+		flex-direction: column;
+	    justify-content: space-between;
+	}
+	#CriteriosCalcular{
+	    display: flex;
+	    justify-content: space-between;
+	    flex-direction: column;
+	}
+	#Criterios{
+	    display: flex;
+	}
+	#Calcular{
+	    display: flex;
+	}
+	#divResultados{
+		display: flex;
+		justify-content: center;
+		flex-direction: column;
+	}
+	.h3center{
+		text-align: center;
+	}
+	
+	#box_disp_cont{
+		width: 520px;
+	}
+	#angulo{
+		width: 190px;
+	}
+	
+	#anguloOrientacao{
+		width: 35px;
+	}
+	
+	#boxCriterios{
+		display: flex;
+		justify-content: space-between;
+		flex-direction: row;
+	}
+	#btnEnvelope{
+		display: flex;
+	}
+	#btnCalcular{
+		width: 138px;
+	}
+	th .naoNegrito{
+		font-weight: normal;
+	}
+	#pTLminus, #pTLplus, #mof, #n{
+    	width: 355px;
+	}
+	#E1F, #nu12F{
+		width: 160px;
+	}
+	#PUCK_E1F, #PUCK_nu12F{
+		width: 65px;
+	}
+	#opcionaisFIBRA{
+		display:flex;
+		flex-direction: row;
+		justify-content: space-between;
+	}
+</style>
+
+<ul class="breadcrumb">
+<!--     <li><a href='{% url "inicio" %}'>Início</a> <span class="divider">/</span></li> -->
+    <li class="active">Módulo desenhado por Julian Gamboa</li>
+</ul>
+
+<!-----------------Agosto 19, 2018------------
+
+Nesta migração inicial, é usada uma única tela HTML
+
+http://127.0.0.1:8000/areaProgramadorAgosto2016/gerando_arquivo_teste_passo_1/
+
+-----Passo 1-->
+
+<div class="row-fluid" id="box_macro">
+	<h3>Critérios e envelopes de Falha mecânica</h3>
+	<iframe src="iframe_entradas_html"  width="1200" height="1300"  scrolling="yes" frameborder="0">
+	</iframe> 
+</div>    
+
+</div>    
+    
+
+
+{% endblock %}

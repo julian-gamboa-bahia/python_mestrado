@@ -1,0 +1,124 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+	<title>Mapa de cores</title>
+
+	<link href="http://www.flotcharts.org/flot/examples/examples.css" rel="stylesheet" type="text/css">
+	<!--[if lte IE 8]><script language="javascript" type="text/javascript" src="../../excanvas.min.js"></script><![endif]-->
+	<script language="javascript" type="text/javascript" src="http://www.flotcharts.org/flot/jquery.js"></script>
+	<script language="javascript" type="text/javascript" src="http://www.flotcharts.org/flot/jquery.flot.js"></script>
+
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">  
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+<script type="text/javascript">
+
+//------------------------------------------consulta
+var envelope2=     $.ajax({
+        dataType: 'json',
+        contentType: "application/json",
+        type : 'get',
+	cache: true,
+	url: "http://127.0.0.1:8000/envelopesDidaticos/envelopeFalhaFlotJson/",	
+    })
+//------------------------------------------consultamos para duas fontes e poder fazer dois gráficos.
+	$.ajax({
+        dataType: 'json',
+        contentType: "application/json",
+        type : 'get',
+	cache: true,
+	url: "http://127.0.0.1:8000/areaProgramadorAgosto2016/FlotJson/",	
+        'success': function (data_escalada) {
+            envelope2 = data_escalada;
+	options = {
+			legend: {
+				show: false
+			},
+			series: {
+				lines: {
+					show: true
+				},
+				points: {
+					show: true
+				}
+			},
+			yaxis: {
+				ticks: 10
+			},
+			selection: {
+				mode: "xy"
+			}
+		};
+
+        }
+    })
+
+
+//------------------------------------------usamos varios graficos
+
+
+    .done (function(data,httpResponse) { 
+var plot = $.plot(
+"#placeholder", 
+[
+	{
+//--------------usando apenas os brancos e os pretos
+		data://amarelos
+{% autoescape off %}{{pretos}}{% endautoescape %}
+,
+		color: "#000000",
+		points:{
+			show:true,
+			}
+	},
+	{
+		data://pretos
+{% autoescape off %}{{brancos}}{% endautoescape %}
+,
+		color: "#ffd700",
+		points:{
+			show:true,
+			}
+	},
+]
+);
+
+})
+    .fail   (function()     { alert("Error")   ; })
+;
+
+//----------- style="height:800px;width:800px"------------------consultamos para duas fontes e poder fazer dois gráficos.
+
+
+</script>
+
+</head>
+<body>
+
+
+<div id="content" >
+<br>
+	<a class="btn btn-primary" href="" role="button" target="_blank" >Ampliar</a>
+<!-- eliminar esta clase e colocar outra, problema de tamanho-->
+
+	<div class="demo-container" >
+		Neste gráfico estamos aplicando o arquivo "teste" no material:
+		{% autoescape off %}{{NOME}}{% endautoescape %}
+		<br>
+		Usando o critério
+		<br>
+		<b>
+		{% autoescape off %}{{nome_criterio}}{% endautoescape %}
+		</b>
+		<br>
+		Unidades de Pascal. (&sigma;X vs. &sigma;Y)
+		<br>
+		<!--gráfico -->
+			<div id="placeholder" class="demo-placeholder" >
+			</div>
+	</div>
+</div>
+</body>
+</html>
+

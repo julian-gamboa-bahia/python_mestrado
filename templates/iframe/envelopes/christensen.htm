@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <title>Envelope do critério de Christensen</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  
+
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+
+<!--Biblioteca responsiva para ser usada na parte gráfica-->
+
+<link rel="stylesheet" href="//cdn.jsdelivr.net/chartist.js/latest/chartist.min.css">
+<script src="//cdn.jsdelivr.net/chartist.js/latest/chartist.min.js"></script>
+
+
+<!--Colocamos cores específicos para cada traço-->
+<style type="text/css">
+	.ct-series-a .ct-bar, .ct-series-a .ct-line, .ct-series-a .ct-point, .ct-series-a .ct-slice-donut {
+	    stroke: #0CC162;
+	}
+	.ct-series-b .ct-bar, .ct-series-b .ct-line, .ct-series-b .ct-point, .ct-series-b .ct-slice-donut {
+	    stroke: #0CC162;
+	}
+	.ct-chart {
+	    margin: auto;
+	}
+
+    .demo-placeholder {
+    width: 100%;
+    height: 100%;
+    font-size: 14px;
+    line-height: 1.2em;
+    }
+</style>
+
+<script>
+
+
+/*
+Outubro 15
+Os paramêtros passam por um prompt simples
+*/
+    entrada = prompt("Por favor indique o número de pontos da barredura", 55);
+    if (entrada != null) {
+        numeroPontos=entrada;
+    }
+    else
+    {
+        numeroPontos=55;
+    }
+
+    $.ajax({
+    url: "/criterios_envelopes_julian/entradas/iframe_entradas_html/EnvelopeFalhaFlotJson/christensen/coletar_numeroPontos/"+numeroPontos,    
+    cache: true,        
+    type : 'get',
+    success: function (response) {
+            //alert("legal");
+        }
+    });
+
+    alert("Numero de pontos do envelope "+numeroPontos);
+
+/*
+Setembro 26:
+
+As informações são recebidas desde o Django usando o sistema de transferência por TEMPLATE
+Estás informações são colocadas no template
+*/
+
+
+    var angulo={{angulo}}; 
+    var laminaURL={{material}}; 
+    var criterio={{livre}}; 
+    var sigX={{sigma_x}}; 
+    var sigY={{sigma_y}}; 
+    var tauXY={{tau_xy}}; 
+    var limpar={{livre_2}}; 
+    var nome="{{nome}}";
+
+
+    var EPSILON_T_1="{{EPSILON_T_1}}";
+    var EPSILON_T_2="{{EPSILON_T_2}}";
+    var EPSILON_C_1="{{EPSILON_C_1}}";
+    var EPSILON_C_2="{{EPSILON_C_2}}";
+    var GAMMA12="{{GAMMA12}}";
+
+    var SIGMA_T_1="{{SIGMA_T_1}}";//        SIGMA_T_1=dados[laminaURL_numerico].SIGMA_T_1;  
+    var SIGMA_T_2="{{SIGMA_T_2}}";//        SIGMA_T_2=dados[laminaURL_numerico].SIGMA_T_2;
+    var SIGMA_C_1="{{SIGMA_C_1}}";//        SIGMA_C_1=dados[laminaURL_numerico].SIGMA_C_1;
+    var SIGMA_C_2="{{SIGMA_C_2}}";//        SIGMA_C_2=dados[laminaURL_numerico].SIGMA_C_2;
+    var TAU12="{{TAU12}}";//        TAU12=dados[laminaURL_numerico].TAU12;
+
+
+    
+// O critério códificado em forma simples:
+
+    var angulo_GLOBAL=angulo;    
+
+
+// Informamos as saídas na tela
+
+//Enviamos as informações ao servidor
+
+$(document).ready(function(){
+
+        $("#entrada_theta").text(angulo);
+        $("#entrada_sigma_x").text(sigX);
+        $("#entrada_sigma_y").text(sigY);
+        $("#entrada_tau_xy").text(tauXY);
+
+    	$("#lamina_url").text("Lamina de: "+nome);
+
+        $("#EPSILON_T_1").text(EPSILON_T_1);
+        $("#EPSILON_T_2").text(EPSILON_T_2);
+        $("#EPSILON_C_1").text(EPSILON_C_1);
+        $("#EPSILON_C_2").text(EPSILON_C_2);
+        $("#GAMMA12").text(GAMMA12);
+
+            $("#SIGMA_T_1").text(SIGMA_T_1);
+    $("#SIGMA_T_2").text(SIGMA_T_2);
+    $("#SIGMA_C_1").text(SIGMA_C_1);
+    $("#SIGMA_C_2").text(SIGMA_C_2);
+    $("#TAU12").text(TAU12);
+
+
+//Colocamos os vértices para facilitar o auto-teste
+//completo_url=window.location.href+"criterios/maxima_tensao.htm?/"+angulo_theta+"/"+lamina+"/00/"+entrada_sigma_x+"/"+entrada_sigma_y+"/"+entrada_tau_xy+"/0/";
+//		completo_url=base_url+"criterios/"+criterioNOME+".htm?/"+angulo_theta+"/"+lamina+"/00/"+entrada_sigma_x+"/"+entrada_sigma_y+"/"+entrada_tau_xy+"/0/";
+//	calculo_conforme_angulo(angulo,tauXY);
+//facilitamos pular de um envelope para outro
+
+    var url_original=window.location.href;          
+    var base_url = url_original.split("criterios")[0]+"criterios_envelopes"+url_original.split("envelopes")[1]+"envelopes/";
+
+//melhorado
+    document.getElementById("envelope_max_tensao").setAttribute('href', base_url+"maxima_tensao.htm!/"+angulo+"/"+laminaURL+"/00/"+sigX+"/"+sigY+"/"+tauXY+"/0/");
+    document.getElementById("envelope_max_deformacao").setAttribute('href', base_url+"maxima_deformacao.htm!/"+angulo+"/"+laminaURL+"/00/"+sigX+"/"+sigY+"/"+tauXY+"/0/");
+    document.getElementById("envelope_tsai_hill").setAttribute('href', base_url+"tsai_hill.htm!/"+angulo+"/"+laminaURL+"/00/"+sigX+"/"+sigY+"/"+tauXY+"/0/");
+
+    document.getElementById("envelope_azzi_tsai").setAttribute('href', base_url+"azzi_tsai.htm!/"+angulo+"/"+laminaURL+"/00/"+sigX+"/"+sigY+"/"+tauXY+"/0/");
+    document.getElementById("envelope_tsai_wu").setAttribute('href', base_url+"tsai_wu.htm!/"+angulo+"/"+laminaURL+"/00/"+sigX+"/"+sigY+"/"+tauXY+"/0/");
+    document.getElementById("envelope_hoffman").setAttribute('href', base_url+"hoffman.htm!/"+angulo+"/"+laminaURL+"/00/"+sigX+"/"+sigY+"/"+tauXY+"/0/");
+
+    document.getElementById("envelope_hashin").setAttribute('href', base_url+"hashin.htm!/"+angulo+"/"+laminaURL+"/00/"+sigX+"/"+sigY+"/"+tauXY+"/0/");
+
+    document.getElementById("envelope_christensen").setAttribute('href', base_url+"christensen.htm!/"+angulo+"/"+laminaURL+"/00/"+sigX+"/"+sigY+"/"+tauXY+"/0/");
+    document.getElementById("envelope_puck").setAttribute('href', base_url+"puck.htm!/"+angulo+"/"+laminaURL+"/00/"+sigX+"/"+sigY+"/"+tauXY+"/0/");
+    document.getElementById("envelope_larc03").setAttribute('href', base_url+"larc03.htm!/"+angulo+"/"+laminaURL+"/00/"+sigX+"/"+sigY+"/"+tauXY+"/0/");
+
+
+///////////
+});
+
+/*
+Setembro24:
+
+
+*/
+
+</script>
+
+<script src="">
+/*************** script script script script----------------
+Setembro27
+Por ser uma réplica do anterior, está parte não deve ser alterada sendo apenas usado para indicar a evolução da mundança
+
+*/
+</script>
+
+</head>
+
+<body>
+
+<div class="container">
+  <div class="row">
+    <div class="col-sm-4">
+	<div class="jumbotron text-center">
+	  <p>Critério de Christensen<br>
+
+        
+	  </p><p>Entrada:<br></p> 
+		Ângulo: <label id="entrada_theta">11</label> (Degree) <br> 
+		σ<sub>x</sub>: <label id="entrada_sigma_x">247935000</label> (Pa) <br>
+		σ<sub>y</sub>: <label id="entrada_sigma_y">02</label> (Pa) <br>
+		τ<sub>xy</sub>: <label id="entrada_tau_xy">03</label> (Pa) <br>
+		<label id="lamina_url">Lamina de: IM7_5250-4</label><br>
+		Propriedades mecânicas desta lâmina:<br> 
+        (σ<sub>1</sub>)<sub>T</sub><sup>U</sup>:  <label id="SIGMA_T_1"></label> (Pa) <br>
+        (σ<sub>2</sub>)<sub>T</sub><sup>U</sup>:  <label id="SIGMA_T_2"></label> (Pa) <br>
+        (σ<sub>1</sub>)<sub>C</sub><sup>U</sup>:  <label id="SIGMA_C_1"></label> (Pa) <br>
+        (σ<sub>2</sub>)<sub>C</sub><sup>U</sup>:  <label id="SIGMA_C_2"></label> (Pa) <br>
+        (τ<sub>12</sub>)<sub>U</sub>:  <label id="TAU12"></label> (Pa) <br>
+	</div>
+
+
+
+	<div class="jumbotron text-center">
+      <p>        
+      <br>
+      </p>
+	  <p>
+	  Reproduzir este mesmo envelope usando outros critérios:<br>
+	  </p>
+		<a id="envelope_max_tensao" href="">Máxima Tensão</a><br>
+
+		<a id="envelope_max_deformacao" href="" /a>Máxima Deformação</a><br>
+		<a id="envelope_tsai_hill" href="" >		Tsai Hill</a><br>
+		<a id="envelope_azzi_tsai" href="" >		Azzi Tsai</a><br>
+		<a id="envelope_tsai_wu" href="" >		Tsai-wu</a><br>
+		<a id="envelope_hoffman" href="" >		Hoffman</a><br>
+		<a id="envelope_hashin" href="" >		Hashin</a><br>
+		<a id="envelope_christensen" href="" >		Christensen</a><br>
+		<a id="envelope_puck" href="" >		Puck</a><br>
+		<a id="envelope_larc03" href="" >		Larc03</a><br>
+	</div>
+
+
+    </div>
+<div class="col-sm-8" align="center">          
+    <h3>Representação gráfica deste tipo de envelope </h3><br><h4>Plano (σ<sub>x</sub>,σ<sub>y</sub>)</h4>  
+    <!--
+    <iframe src="/criterios_envelopes_julian/entradas/iframe_entradas_html/iframe_flot/"  width="1200" height="1300"  scrolling="yes" frameborder="0">
+        <div class="ct-chart ct-golden-section" id="chart1"></div>    
+    -->
+    <iframe src="/criterios_envelopes_julian/entradas/iframe_entradas_html/iframe_flot/"  width="1200" height="1300"  scrolling="yes" frameborder="0">
+        
+  </div>
+</div>
+
+</body></html>

@@ -1,0 +1,150 @@
+{% extends "mechg/base.html" %}
+
+{% load staticfiles %}
+
+{% block content %}
+
+<style type="text/css">
+
+</style>
+
+<!------------------ aula-------------->
+
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html>
+<head>
+	<meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+	<title></title>
+	<meta name="generator" content="LibreOffice 5.0.2.2 (Linux)"/>
+	<meta name="created" content="00:00:00"/>
+	<meta name="changed" content="2016-09-23T13:52:21.467017945"/>
+	<meta name="created" content="2016-09-22T10:30:32.017396003">
+	<meta name="changed" content="2016-09-22T11:10:34.140990907">
+	<style type="text/css">
+		@page { margin: 2cm }
+		td p { margin-bottom: 0cm; line-height: 200% }
+		p { margin-bottom: 0.25cm; line-height: 120% }
+		a:link { so-language: zxx }
+	</style>
+</head>
+<body lang="pt-BR" dir="ltr">
+<p align="center" style="margin-bottom: 0cm; line-height: 200%"><b><font size="4" style="font-size: 15pt">Critérios
+e envelopes de falha mecânica</font> </b>
+</p>
+<p align="center" style="margin-bottom: 0cm; line-height: 200%"><font size="4" style="font-size: 15pt"><b>Introdução</b></font></p>
+<p style="margin-bottom: 0cm; line-height: 200%"><br/>
+
+</p>
+<p style="margin-bottom: 0cm; line-height: 200%">
+Um critério de falha é aquela função que permite determinar o índice de falha (IF) de um material quando este seja submetido à um estado de
+esforços. 
+
+Os critérios de falha para materiais compósitos geralmente definem rangos especificos onde é provavel uma fratura apenas na fibra ou na matriz.
+</p>
+<p style="margin-bottom: 0cm; line-height: 200%">Um envelope de falha
+se define como o conjunto de pontos no plano de esforços onde o IF
+assume um valor específico, geralmente de 1. 
+</p>
+<p style="margin-bottom: 0cm; line-height: 200%"><br/>
+
+</p>
+<p align="center" style="margin-bottom: 0cm; line-height: 200%"><font size="4" style="font-size: 15pt"><b>Critérios
+mais usados</b></font></p>
+<p style="margin-bottom: 0cm; line-height: 200%"><br/>
+
+</p>
+<p align="justify" style="margin-bottom: 0cm; line-height: 200%">Os
+mais antigos e mais usados pela sua fácil interpretação são os
+lineais, chamados de “<i>critério de máximo esforço</i>” e
+“<i>critério de máxima deformação</i>”. O primero destes
+critérios não acopla de forma nenhuma os esforços o que gera
+serias contradições no teoría elástica, e no caso do segundo
+critério este acople aparece de forma indireta quando o coeficiente
+de Poisson não é nulo. 
+</p>
+<p align="justify" style="margin-bottom: 0cm; line-height: 200%">Os
+envelopes de falha destes critérios lineais é uma linha poligonal
+fechada com 4 ou no máximo 6 esquinas cuja forma depende do ângulo
+de rotação da lâmina, onde é importante comentar vários casos :</p>
+<ul>
+	<li/>
+<p align="justify" style="margin-bottom: 0cm; line-height: 200%">
+	<b>Rotacionado um ângulo multiplo interiro de (pi/2)</b>: Os
+	envelopes do critério de máxima deformação rotacionados desta
+	maneira tem sempre a forma quadrada:</p>
+	<ul>
+		<li/>
+<p align="justify" style="margin-bottom: 0cm; line-height: 200%">
+		<b>Caso 0</b>: geramos o gráfico no MECHG (<a href="/criterios_envelopes_julian/entradas/iframe_entradas_html/envelopes/maxima_tensao.htm!/0/11/00/0/0/0/0/" target="_blank">link_1</a>)</p>
+		<li/>
+<p align="justify" style="margin-bottom: 0cm; line-height: 200%">
+		<b>Caso pi/2</b>: geramos o gráfico no MECHG (<a href="/criterios_envelopes_julian/entradas/iframe_entradas_html/envelopes/maxima_tensao.htm!/90/11/00/0/0/0/0/" target="_blank">link_</a>2)</p>
+		<li/>
+<p align="justify" style="margin-bottom: 0cm; line-height: 200%">
+		<b>Caso 0 e Caso pi</b>: geramos o gráfico no MECHG (<a href="/criterios_envelopes_julian/entradas/iframe_entradas_html/envelopes/maxima_tensao.htm!/00/11/00/0/0/0/0.1/" target="_blank">link_</a>3)</p>
+	</ul>
+	<li/>
+<p align="justify" style="margin-bottom: 0cm; line-height: 200%">
+	Rotação espelhada, sem esforço cisalhante:</p>
+	<ul>
+		<li/>
+<p align="justify" style="margin-bottom: 0cm; line-height: 200%">
+		<b>Caso </b><b>33</b>: geramos o gráfico no MECHG (<a href="/criterios_envelopes_julian/entradas/iframe_entradas_html/envelopes/maxima_tensao.htm!/33/11/00/0/0/0/0/" target="_blank">link_</a>)</p>
+		<li/>
+<p align="justify" style="margin-bottom: 0cm; line-height: 200%">
+		<b>Caso </b><b>-33</b>: geramos o gráfico no MECHG (<a href="/criterios_envelopes_julian/entradas/iframe_entradas_html/envelopes/maxima_tensao.htm!/-33/11/00/0/0/0/.10/" target="_blank">link_</a>)</p>
+	</ul>
+
+
+	Rotação espelhada, com esforço cisalhante:</p>
+	<ul>
+		<li/>
+<p align="justify" style="margin-bottom: 0cm; line-height: 200%">
+		<b>Caso </b><b>33</b>: geramos o gráfico no MECHG (<a href="/criterios_envelopes_julian/entradas/iframe_entradas_html/envelopes/maxima_tensao.htm!/33/11/00/0/0/4e5/0/" target="_blank">link_</a>)</p>
+		<li/>
+<p align="justify" style="margin-bottom: 0cm; line-height: 200%">
+		<b>Caso </b><b>-33</b>: geramos o gráfico no MECHG (<a href="/criterios_envelopes_julian/entradas/iframe_entradas_html/envelopes/maxima_tensao.htm!/-33/11/00/0/0/4e5/0/" target="_blank">link_</a>)</p>
+	</ul>
+
+
+</ul>
+<p align="justify" style="margin-bottom: 0cm; line-height: 200%">Analisando
+a formulação matemática vemos que existem três formas de obter um
+IF maior que 1 o que pode se verificar nos cálculos feitos pelo
+software MECHG.</p>
+<table width="100%" cellpadding="4" cellspacing="0">
+	<col width="256*">
+	<tr>
+		<td width="100%" valign="top" style="border: 1px solid #000000; padding: 0.1cm">
+			<p align="center"><b>Exemplo 1:</b></p>
+		</td>
+	</tr>
+	<tr>
+		<td width="100%" valign="top" style="border-top: none; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000; padding-top: 0cm; padding-bottom: 0.1cm; padding-left: 0.1cm; padding-right: 0.1cm">
+			<p align="justify" style="margin-bottom: 0.5cm">Cálcular os
+			indices de falha mecânica para uma lâmina de material “<font size="3" style="font-size: 12pt">HTS150_TC250”, rotacionada 33 ,</font> <font size="3" style="font-size: 12pt">com
+			o estado de esforços: (σ1,σ2,τ12)=(-409982172.295,-185800662.457,0)  (Pa).</font></p>
+			<p align="justify" style="margin-bottom: 0.5cm"><font size="3" style="font-size: 12pt">Resultado
+			(<a href="/criterios_envelopes_julian/entradas/iframe_entradas_html/criterios/maxima_tensao.htm!/33/11/00/-409982172.295/-185800662.457/0/0/" target="_blank">link_4</a>)</font></p>
+			
+		</td>
+	</tr>
+</table>
+<p align="justify" style="margin-bottom: 0cm; line-height: 200%"><br/>
+
+</p>
+<p align="justify" style="margin-bottom: 0cm; line-height: 200%"><br/>
+
+</p>
+<p style="margin-bottom: 0cm; line-height: 200%"><br/>
+
+</p>
+<p style="margin-bottom: 0cm; line-height: 200%"><br/>
+
+</p>
+</body>
+</html>
+
+<!---------------------fim da aula-------------->
+
+{% endblock %}

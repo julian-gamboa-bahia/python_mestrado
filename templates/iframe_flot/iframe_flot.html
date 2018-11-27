@@ -1,0 +1,452 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html><head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	<title>FLot não responsivo</title>
+	<link href="http://www.flotcharts.org/flot/examples/examples.css" rel="stylesheet" type="text/css">
+	<!--[if lte IE 8]><script language="javascript" type="text/javascript" src="../../excanvas.min.js"></script><![endif]-->
+	<script language="javascript" type="text/javascript" src="http://www.flotcharts.org/flot/jquery.js"></script>
+	<script language="javascript" type="text/javascript" src="http://www.flotcharts.org/flot/jquery.flot.js"></script>
+
+
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+
+<script >
+
+function redesenhar_click()
+{
+// verificamos que esteja ativo
+	var REDESENHAR_checkbox_envelope_0 = document.getElementById("checkbox_envelope_0");
+	var REDESENHAR_checkbox_envelope_1 = document.getElementById("checkbox_envelope_1");
+	var REDESENHAR_checkbox_envelope_2 = document.getElementById("checkbox_envelope_2");
+	var REDESENHAR_checkbox_envelope_3 = document.getElementById("checkbox_envelope_3");
+	var REDESENHAR_checkbox_envelope_4 = document.getElementById("checkbox_envelope_4");
+	var REDESENHAR_checkbox_envelope_5 = document.getElementById("checkbox_envelope_5");
+	var REDESENHAR_checkbox_envelope_6 = document.getElementById("checkbox_envelope_6");
+	
+//Apartir de aqui fazemos um acumulativo em função daqueles que estejam marcados	
+	
+//0
+	if (REDESENHAR_checkbox_envelope_0.checked == true)
+	{
+		$.ajax({
+	    	url: "/criterios_envelopes_julian/redesenho/{{redesenho_criterio}}/0/",    
+	    	cache: true,        
+	    	type : 'get',
+			'success': function (data,response) {
+	    		//envelope_0
+				var legenda = document.getElementById("envelope_0").textContent; 
+	    		if(data!=1)
+	    		{
+					alert("No grafico de integração, foi colocado o envelope  "+legenda);
+	    		}
+	    		else
+	    		{
+					alert("Grafico de integração APAGADO. Foi colocado o envelope  "+legenda);
+	    		}	    		
+	        }
+    	});
+	} 
+//1
+	if (REDESENHAR_checkbox_envelope_1.checked == true)
+	{
+		$.ajax({
+	    	url: "/criterios_envelopes_julian/redesenho/{{redesenho_criterio}}/1/",    
+	    	cache: true,        
+	    	type : 'get',
+			'success': function (data,response) {
+	    		//envelope_0
+				var legenda = document.getElementById("envelope_1").textContent; 
+	    		if(data!=1)
+	    		{
+					alert("No grafico de integração, foi colocado o envelope  "+legenda);
+	    		}
+	    		else
+	    		{
+					alert("Grafico de integração APAGADO. Foi colocado o envelope  "+legenda);
+	    		}	    		
+	        }
+    	});
+	} 
+//2
+	if (REDESENHAR_checkbox_envelope_2.checked == true)
+	{
+		$.ajax({
+	    	url: "/criterios_envelopes_julian/redesenho/{{redesenho_criterio}}/2/",    
+	    	cache: true,        
+	    	type : 'get',
+			'success': function (data,response) {
+	    		//envelope_0
+				var legenda = document.getElementById("envelope_2").textContent; 
+	    		if(data!=1)
+	    		{
+					alert("No grafico de integração, foi colocado o envelope  "+legenda);
+	    		}
+	    		else
+	    		{
+					alert("Grafico de integração APAGADO. Foi colocado o envelope  "+legenda);
+	    		}	    		
+	        }
+    	});
+	} 		
+//3
+	if (REDESENHAR_checkbox_envelope_3.checked == true)
+	{
+		$.ajax({
+	    	url: "/criterios_envelopes_julian/redesenho/{{redesenho_criterio}}/3/",    
+	    	cache: true,        
+	    	type : 'get',
+			'success': function (data,response) {
+	    		//envelope_0
+				var legenda = document.getElementById("envelope_3").textContent; 
+	    		if(data!=1)
+	    		{
+					alert("No grafico de integração, foi colocado o envelope  "+legenda);
+	    		}
+	    		else
+	    		{
+					alert("Grafico de integração APAGADO. Foi colocado o envelope  "+legenda);
+	    		}	    		
+	        }
+    	});
+	} 
+//4
+	if (REDESENHAR_checkbox_envelope_4.checked == true)
+	{
+		$.ajax({
+	    	url: "/criterios_envelopes_julian/redesenho/{{redesenho_criterio}}/4/",    
+	    	cache: true,        
+	    	type : 'get',
+			'success': function (data,response) {
+	    		//envelope_0
+				var legenda = document.getElementById("envelope_4").textContent; 
+	    		if(data!=1)
+	    		{
+					alert("No grafico de integração, foi colocado o envelope  "+legenda);
+	    		}
+	    		else
+	    		{
+					alert("Grafico de integração APAGADO. Foi colocado o envelope  "+legenda);
+	    		}	    		
+	        }
+    	});
+	} 
+//5
+	if (REDESENHAR_checkbox_envelope_5.checked == true)
+	{
+		$.ajax({
+	    	url: "/criterios_envelopes_julian/redesenho/{{redesenho_criterio}}/5/",    
+	    	cache: true,        
+	    	type : 'get',
+			'success': function (data,response) {
+	    		//envelope_0
+				var legenda = document.getElementById("envelope_5").textContent; 
+	    		if(data!=1)
+	    		{
+					alert("No grafico de integração, foi colocado o envelope  "+legenda);
+	    		}
+	    		else
+	    		{
+					alert("Grafico de integração APAGADO. Foi colocado o envelope  "+legenda);
+	    		}	    		
+	        }
+    	});
+	} 
+//6
+	if (REDESENHAR_checkbox_envelope_6.checked == true)
+	{
+		$.ajax({
+	    	url: "/criterios_envelopes_julian/redesenho/{{redesenho_criterio}}/6/",    
+	    	cache: true,        
+	    	type : 'get',
+			'success': function (data,response) {
+	    		//envelope_0
+				var legenda = document.getElementById("envelope_6").textContent; 
+	    		if(data!=1)
+	    		{
+					alert("No grafico de integração, foi colocado o envelope  "+legenda);
+	    		}
+	    		else
+	    		{
+					alert("Grafico de integração APAGADO. Foi colocado o envelope  "+legenda);
+	    		}	    		
+	        }
+    	});
+	} 	
+/////////////////////////////////////////////////////			
+}
+
+
+
+
+
+</script>
+
+
+<script type="text/javascript">
+
+
+/*
+Agosto22:
+
+1) Sabe-se que apenas será possível colocar 6 envelopes de forma simultanea.
+2) Os valores máximos e mínimos são colocados usando o passe de argumentos usando o sistema de CHAVES {}
+3) Nesta chamada são passadas ás informações, na consulta do URL: /envelopesDidaticos/envelopeFalhaFlotJson/
+
+4) PERIGOSO: chamar usando este tipo de comando /criterios_envelopes_julian/entradas/iframe_entradas_html/EnvelopeFalhaFlotJson/
+5) 
+6) 
+7) 
+*/
+
+	$.ajax({
+        dataType: 'json',
+        contentType: "application/json",
+        type : 'get',
+	cache: true,
+	url: "{{EnvelopeFalhaFlotJson}}",	
+        'success': function (data,response) {
+
+			criterioTEXT = data.criterio;
+			//DELAY 
+			//Mostrando o ultimo
+        	alert(criterioTEXT[criterioTEXT.length-1]);
+
+        	HTML_criterioTEXT="";
+
+			for(indice=0;indice<criterioTEXT.length;indice++)
+			{
+				//HTML_criterioTEXT=HTML_criterioTEXT+"<br>"+criterioTEXT[indice];
+				$("#envelope_"+indice).text(criterioTEXT[indice]);        
+				$("#checkbox_envelope_"+indice).show();
+
+			}
+
+			minimoX={{minimoX}};
+			maximoX={{maximoX}};
+
+			minimoY={{minimoY}};
+			maximoY={{maximoY}};
+
+
+			options = {
+			series: {
+
+			},
+			yaxis: {
+				tickSize:1, tickDecimals:0,axisLabel: "nome_eixo_x",
+				                    axisLabelUseCanvas: true,
+				                    axisLabelPadding: 5,
+				ticks:[minimoY, minimoY/2.0, minimoY/4.0,  maximoY/4.0, maximoY/2.0, maximoY],
+				//ticks:[minimoY, minimoY, minimoY, 0.0, 0.0, 0.0, maximoY, maximoY, maximoY],
+				tickFormatter: function numberWithCommas(x) { return x.toExponential(1)+" (Pa)";},
+				min:minimoY,
+				max:maximoY,
+
+			},
+			xaxis: {
+				tickSize:1, tickDecimals:0,axisLabel: "nome_eixo_x",
+				                    axisLabelUseCanvas: true,
+				                    axisLabelPadding: 5,
+			ticks:[minimoX, minimoX/2.0, minimoX/4.0, ,maximoX/4.0, maximoX/2.0, maximoX],	
+			
+			tickFormatter: function numberWithCommas(x) { return x.toExponential(1)+" (Pa)";},
+				min:minimoX,
+				max:maximoX,
+			},
+			selection: {
+				mode: "xy"
+			},
+
+				legend: {
+						position: "se"
+					},
+			colors: 
+					
+					["#FF7070", "#0022FF", "#002200", "#0012FF", "#00227F", "#0022F0"],
+					
+					};
+		        }
+		    })
+
+//------------------------------------------usamos varios graficos
+
+    .done (function(data,httpResponse) {   
+		d1=[];d2=[];d3=[];d4=[];d5=[];d6=[];
+		var a = data.data;
+
+		for(i=0;i<={{django_limite1}};i++) // tem que ser <= IGUAL porque ele fecha
+		{
+			d1.push(a[i]);		
+			a[i]="null";
+		}
+
+		for(i=0;i<={{django_limite1}};i++) // tem que ser <= IGUAL porque ele fecha
+		{
+			a.splice(0, 1);
+		}
+		a.splice(0, 1);
+
+
+		for(i=0;i<={{django_limite2}};i++) // tem que ser <= IGUAL porque ele fecha
+		{
+			d2.push(a[i]);		
+			a[i]="null";
+		}
+
+		for(i=0;i<={{django_limite2}};i++) // tem que ser <= IGUAL porque ele fecha
+		{
+			a.splice(0, 1);
+		}
+		a.splice(0, 1);
+
+		for(i=0;i<={{django_limite3}};i++) // tem que ser <= IGUAL porque ele fecha
+		{
+			d3.push(a[i]);		
+			a[i]="null";
+		}
+
+		for(i=0;i<={{django_limite3}};i++) // tem que ser <= IGUAL porque ele fecha
+		{
+			a.splice(0, 1);
+		}
+		a.splice(0, 1);	
+
+		for(i=0;i<={{django_limite4}};i++) // tem que ser <= IGUAL porque ele fecha
+		{
+			d4.push(a[i]);		
+			a[i]="null";
+		}
+
+		for(i=0;i<={{django_limite4}};i++) // tem que ser <= IGUAL porque ele fecha
+		{
+			a.splice(0, 1);
+		}
+		a.splice(0, 1);	
+
+		for(i=0;i<={{django_limite5}};i++) // tem que ser <= IGUAL porque ele fecha
+		{
+			d5.push(a[i]);		
+			a[i]="null";
+		}
+
+		for(i=0;i<={{django_limite5}};i++) // tem que ser <= IGUAL porque ele fecha
+		{
+			a.splice(0, 1);
+		}
+		a.splice(0, 1);	
+
+		for(i=0;i<={{django_limite6}};i++) // tem que ser <= IGUAL porque ele fecha
+		{
+			d6.push(a[i]);		
+			a[i]="null";
+		}
+
+		for(i=0;i<={{django_limite6}};i++) // tem que ser <= IGUAL porque ele fecha
+		{
+			a.splice(0, 1);
+		}
+		a.splice(0, 1);		
+
+	var dataset = [
+				{ data: d1, lines: { show: true, lineWidth: 1, fill: false }, points: {show: false, radius: 3}},
+				{ data: d2, lines: { show: true, lineWidth: 1, fill: true }, points: {show: false, radius: 3}},
+				{ data: d3, lines: { show: true, lineWidth: 1, fill: false }, points: {show: false, radius: 3}},
+				{ data: d4, lines: { show: true, lineWidth: 1, fill: false }, points: {show: false, radius: 3}},
+				{ data: d5, lines: { show: true, lineWidth: 1, fill: false }, points: {show: false, radius: 3}},
+				{ data: d6, lines: { show: true, lineWidth: 1, fill: false }, points: {show: false, radius: 3}},
+	];
+
+	var plot = $.plot(placeholder, dataset , options );
+	})
+    .fail   (function()     { alert("Error")   ; 
+
+})
+;
+
+
+</script>
+
+<script src="/criterios_envelopes_julian/vertices/{{nome_criterio_vertices}}">
+/*************** script script script script
+
+Outubro 05: 
+É preciso direcionar a procurar conforme o critéro:
+
+Passando de: 
+
+/criterios_envelopes_julian/maxima_tensao/vertices.js
+
+Para:
+
+/criterios_envelopes_julian/vertices.js?criterio
+
+Para isso:
+
+Se recebe  "nome_criterio_vertices" para direcionar (usar um SELECT) desde o VIEW.py
+
+
+*************** script script script script----------------*/
+</script>
+
+
+
+
+
+</head>
+<body>
+	<div id="content">
+
+		<div class="demo-container">
+			<div id="placeholder" class="demo-placeholder" style="padding: 0px; position: relative;"><canvas class="flot-base" style="direction: ltr; position: absolute; left: 0px; top: 0px; width: 818px; height: 413px;" width="818" height="413"></canvas><div class="flot-text" style="position: absolute; top: 0px; left: 0px; bottom: 0px; right: 0px; font-size: smaller; color: rgb(84, 84, 84);"><div class="flot-x-axis flot-x1-axis xAxis x1Axis" style="position: absolute; top: 0px; left: 0px; bottom: 0px; right: 0px; display: block;"><div style="position: absolute; max-width: 102px; top: 394px; left: 25px; text-align: center;" class="flot-tick-label tickLabel">0</div><div style="position: absolute; max-width: 102px; top: 394px; left: 141px; text-align: center;" class="flot-tick-label tickLabel">2</div><div style="position: absolute; max-width: 102px; top: 394px; left: 257px; text-align: center;" class="flot-tick-label tickLabel">4</div><div style="position: absolute; max-width: 102px; top: 394px; left: 373px; text-align: center;" class="flot-tick-label tickLabel">6</div><div style="position: absolute; max-width: 102px; top: 394px; left: 488px; text-align: center;" class="flot-tick-label tickLabel">8</div><div style="position: absolute; max-width: 102px; top: 394px; left: 601px; text-align: center;" class="flot-tick-label tickLabel">10</div><div style="position: absolute; max-width: 102px; top: 394px; left: 717px; text-align: center;" class="flot-tick-label tickLabel">12</div></div><div class="flot-y-axis flot-y1-axis yAxis y1Axis" style="position: absolute; top: 0px; left: 0px; bottom: 0px; right: 0px; display: block;"><div style="position: absolute; top: 381px; left: 4px; text-align: right;" class="flot-tick-label tickLabel">-2.5</div><div style="position: absolute; top: 326px; left: 8px; text-align: right;" class="flot-tick-label tickLabel">0.0</div><div style="position: absolute; top: 272px; left: 8px; text-align: right;" class="flot-tick-label tickLabel">2.5</div><div style="position: absolute; top: 218px; left: 8px; text-align: right;" class="flot-tick-label tickLabel">5.0</div><div style="position: absolute; top: 163px; left: 8px; text-align: right;" class="flot-tick-label tickLabel">7.5</div><div style="position: absolute; top: 109px; left: 2px; text-align: right;" class="flot-tick-label tickLabel">10.0</div><div style="position: absolute; top: 55px; left: 2px; text-align: right;" class="flot-tick-label tickLabel">12.5</div><div style="position: absolute; top: 1px; left: 2px; text-align: right;" class="flot-tick-label tickLabel">15.0</div></div></div><canvas class="flot-overlay" style="direction: ltr; position: absolute; left: 0px; top: 0px; width: 818px; height: 413px;" width="818" height="413"></canvas></div>
+
+		</div>		
+<div>
+		<a class="btn btn-primary" href="{{MATLAB_botao}}" role="button">MATLAB do envelope</a>
+		<a class="btn btn-warning" href="{{GNU_botao}}" role="button">GNU (Pontos gerados)</a>
+		<a class="btn btn-success" role="button" id="botao_redesenhar" onclick="redesenhar_click()"  href="/criterios_envelopes_julian/redesenho/flot/"  target="_blank"  >Redesenhar</a>
+</div>		
+		<div><b>Histórico de envelopes</b><br>
+			(Primeiramente os mais antigo)
+			<br>
+				<input type="checkbox" hidden id="checkbox_envelope_0" name="envelope_1" value="value_envelope_1"  >    				
+				<a id="envelope_0"  target="_blank"/a></a><br>
+				<input type="checkbox" hidden id="checkbox_envelope_1" name="envelope_2" value="value_envelope_2"  >    		        
+				<a id="envelope_1"  target="_blank"/a></a><br>
+				<input type="checkbox" hidden  id="checkbox_envelope_2" name="envelope_3" value="value_envelope_3" >    		        
+				<a id="envelope_2"   target="_blank"/a></a><br>
+				<input type="checkbox" hidden  id="checkbox_envelope_3" name="envelope_4" value="value_envelope_4" >    		        
+				<a id="envelope_3"   target="_blank"/a></a><br>
+				<input type="checkbox" hidden  id="checkbox_envelope_4" name="envelope_5" value="value_envelope_5" >    		        
+				<a id="envelope_4"   target="_blank"/a></a><br>
+				<input type="checkbox" hidden  id="checkbox_envelope_5" name="envelope_6" value="value_envelope_6" >    		        
+				<a id="envelope_5"   target="_blank"/a></a><br>
+				<input type="checkbox" hidden  id="checkbox_envelope_6" name="envelope_7" value="value_envelope_7" >    		        
+				<a id="envelope_6"   target="_blank"/a></a><br>
+		 </div>		
+			<b>
+				<p>
+				Vértices do ENVELOPE (mais recente)
+				<br>
+				(σ<sub>x</sub>,σ<sub>y</sub>)
+				</p>
+			</b>
+		        <a id="vertice_0" href="" target="_blank"/a></a><br>
+		        <a id="vertice_1" href="" target="_blank"/a></a><br>
+		        <a id="vertice_2" href=""  target="_blank"/a></a><br>
+		        <a id="vertice_3" href=""  target="_blank"/a></a><br>
+		        <a id="vertice_4" href=""  target="_blank"/a></a><br>
+		        <a id="vertice_5" href=""  target="_blank"/a></a><br>
+		        <a id="vertice_6" href=""  target="_blank"/a></a><br>
+		        <a id="vertice_7" href=""  target="_blank"/a></a><br>
+			</div>
+
+		</div>
+
+	</div>
+
+	</div>
+
+
+</body></html>
